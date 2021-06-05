@@ -1,0 +1,24 @@
+{
+  "name": "hw10_teamprofilebuilder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rpupo7322/HW10_TeamProfileBuilder.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rpupo7322/HW10_TeamProfileBuilder/issues"
+  },
+  "homepage": "https://github.com/rpupo7322/HW10_TeamProfileBuilder#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "inquirer": "^8.1.0",
+    "jest": "^27.0.4"
+  }
+}
