@@ -6,6 +6,11 @@ const Manager = require("./lib/manager");
 const Intern = require("./lib/intern"); 
 const Engineer = require("./lib/engineer"); 
 
+const ManagerBuilder = require("./src/ManagerBuilder.HTML")
+const EngineerBuilder = require("./src/EngineerBuilder.HTML")
+const InternBuilder = require("./src/InternBuilder.HTML")
+const HTMLBegin = require("./src/HTMLBegin.HTML")
+const HTMLEnd = require("./src/HTMLEnd.HTML")
 
 // create writeFile function using promises instead of a callback function
 const writeFileAsync = util.promisify(fs.writeFile);
@@ -131,7 +136,8 @@ const engineerAdd = () => {
         } else if (answers.newTeamMember === 'Intern') {
           internAdd();
         } else {
-          console.log(teamMembers)
+          // console.log(teamMembers)
+          buildHTML(teamMembers);
         }
     })
   })
@@ -149,8 +155,35 @@ const internAdd = () => {
         } else if (answers.newTeamMember === 'Intern') {
           internAdd();
         } else {
-          console.log(teamMembers)
+          // console.log(teamMembers)
+          buildHTML(teamMembers);
         }
     })
   })
+}
+
+const buildHTML =  (tMs) => {
+  var manager = null;
+  const interns =[];
+  const engineers = [];
+
+  // console.log(tMs);
+  // console.log(tMs.length)
+  // console.log(tMs[0])
+  // for(i = 0; i < tMs.length; i++) {
+  //   console.log(tMs[i].getRole())
+  // }
+  tMs.forEach((member) => {
+    // console.log(member)
+    if (member.getRole() === 'Manager') {
+      manager = member;
+    } else if (member.getRole() === "Engineer") {
+      engineers.push(member)
+    } else if (member.getRole() === "Intern") {
+      interns.push(member)
+    }
+  })
+  console.log("The manager is", manager);
+  console.log("The engineers are", engineers);
+  console.log("The interns are", interns);
 }
