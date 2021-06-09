@@ -6,11 +6,11 @@ const Manager = require("./lib/manager");
 const Intern = require("./lib/intern"); 
 const Engineer = require("./lib/engineer"); 
 
-const ManagerBuilder = require("./src/ManagerBuilder.HTML")
-const EngineerBuilder = require("./src/EngineerBuilder.HTML")
-const InternBuilder = require("./src/InternBuilder.HTML")
-const HTMLBegin = require("./src/HTMLBegin.HTML")
-const HTMLEnd = require("./src/HTMLEnd.HTML")
+const ManagerBuilder = require("./src/ManagerBuilder.js")
+const EngineerBuilder = require("./src/EngineerBuilder.js")
+const InternBuilder = require("./src/InternBuilder.js")
+const HTMLBegin = require("./src/HTMLBegin.js")
+const HTMLEnd = require("./src/HTMLEnd.js")
 
 // create writeFile function using promises instead of a callback function
 const writeFileAsync = util.promisify(fs.writeFile);
@@ -111,7 +111,7 @@ inquirer
       teamMembers.push(new Manager(answers.name, answers.id, answers.email, answers.officeNumber));
 
         // nextChoice = answers.engineerIntern; 
-      console.log(teamMembers);
+      // console.log(teamMembers);
       inquirer.prompt(teamMemberQuestion)
       .then((answers) => {
         if (answers.newTeamMember === 'Engineer') {
@@ -183,7 +183,38 @@ const buildHTML =  (tMs) => {
       interns.push(member)
     }
   })
-  console.log("The manager is", manager);
-  console.log("The engineers are", engineers);
-  console.log("The interns are", interns);
+
+  htmlBuild(HTMLBegin);
+  ManagerBuilder.managerBuild(manager);
+  engineers.forEach((engineer) => {
+    EngineerBuilder.EngineerBuild(engineer)
+  })
+  interns.forEach((intern) => {
+    InternBuilder.InternBuild(intern)
+  })
+  htmlClose(HTMLEnd)
+  // console.log(HTMLBegin)
+  // console.log(ManagerBuilder)
+  // console.log("The manager is", manager);
+  // console.log("The engineers are", engineers);
+  // console.log("The interns are", interns);
 }
+
+const htmlBuild = (HTMLBegin) => {
+  fs.writeFile('./dist/teamMembers.html', HTMLBegin.HTMLBegin, (err) => err ? console.log(err) : '')
+  // console.log(HTMLBegin.HTMLBegin)
+}
+const htmlClose = (HTMLEnd) => {
+  fs.writeFile('./dist/teamMembers.html', HTMLEnd.HTMLEnd, (err) => err ? console.log(err) : '')
+  // console.log(HTMLBegin.HTMLBegin)
+}
+
+// const managerBuild = (ManagerBuilder, man) => {
+//   let name = man.name;
+//   let role = man.getRole();
+//   let id = man.id;
+//   let email = man.email;
+//   let phone = man.phone;
+//   // ManagerBuilder.ManagerBuilder;
+//   fs.appendFile('./dist/teamMembers.html', ManagerBuilder.ManagerBuilder, (err) => err ? console.log(err) : '')
+// }
