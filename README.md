@@ -18,7 +18,9 @@ WHEN I decide to finish building my team
 THEN I exit the application, and the HTML is generated
 
 Application Pictures:
-Terminal.PNG
-Webpage.PNG
+1. Terminal with user input
+![Terminal](https://github.com/rpupo7322/HW10_TeamProfileBuilder/blob/main/ApplicationPictures/Terminal.PNG)
+2. A sample web page with output
+![Webpage](https://github.com/rpupo7322/HW10_TeamProfileBuilder/blob/main/ApplicationPictures/Webpage.PNG)
 
-Application can be found at the following link
+Application can be found at the following link: https://rpupo7322.github.io/HW10_TeamProfileBuilder/
