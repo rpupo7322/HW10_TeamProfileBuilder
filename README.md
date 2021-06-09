@@ -18,7 +18,7 @@ WHEN I decide to finish building my team
 THEN I exit the application, and the HTML is generated
 
 Application Pictures:
-
-
+Terminal.PNG
+Webpage.PNG
 
 Application can be found at the following link
